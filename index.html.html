@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tatianna Felix · Consultora de Dados</title>
+
+<style>
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,Arial,sans-serif;}
+
+:raiz{
+
+--marinha:#1A1B3A; /* base escura */
+
+--navy2:#242652; /* cartas */
+
+--violeta:#7C3AED; /* destaque principal */
+
+--violeta2:#9D5CF5;
+
+--laranja:#FF6B35; /* CTA / ação */
+
+--laranja2:#FF8659;
+
+--azul:#4F7CFF; /* apoio */
+
+--bg:#F7F7FB;
+
+--txt:#1A1B3A;
+
+--silenciado:#8A8CB0;
+
+--muted2:#B4B6D4;
+
+--linha:rgba(255,255,255,.08);
+
+}
+
+corpo{fundo:var(--bg);cor:var(--txt);altura-da-linha:1.6;}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 26px;}
+
+a{text-decoration:none;}
+
+
+/* NAV */
+
+nav{position:sticky;top:0;z-index:100;background:rgba(26,27,58,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+
+.navin{max-width:1120px;margin:0 auto;padding:16px 26px;display:flex;justify-content:space-between;align-items:center;}
+
+.logo{color:#fff;font-size:18px;font-weight:800;letter-spacing:.5px;display:flex;align-items:center;gap:9px;}
+
+.logo .dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--violeta),var(--laranja));}
+
+.navlinks{display:flex;gap:28px;}
+
+.navlinks a{color:var(--muted2);font-size:14px;font-weight:600;transition:.2s;}
+
+.navlinks a:hover{color:#fff;}
+
+
+/* HERÓI */
+
+.hero{background:var(--navy);position:relative;overflow:hidden;padding:90px 0 100px;}
+
+.hero::before{content:"";position:absolute;top:-120px;right:-80px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(124,58,237,.35),transparent 70%);}
+
+.hero::after{content:"";position:absolute;bottom:-140px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.22),transparent 70%);}
+
+.hero .wrap{position:relative;z-index:2;}
+
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.4);color:var(--violeta2);font-size:13px;font-weight:700;padding:7px 16px;border-radius:30px;margin-bottom:24px;}
+
+.badge .pulse{width:8px;height:8px;border-radius:50%;background:#3ad07a;box-shadow:0 0 0 4px rgba(58,208,122,.25);}
+
+.hero h1{color:#fff;font-size:56px;font-weight:800;line-height:1.05;letter-spacing:-1px;max-width:820px;}
+
+.hero h1 .grad{background:linear-gradient(120deg,var(--violeta2),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+.hero .sub{color:var(--muted2);font-size:19px;margin-top:22px;max-width:600px;}
+
+.hero-cta{display:flex;gap:14px;margin-top:36px;flex-wrap:wrap;}
+
+.btn{padding:15px 30px;border-radius:10px;font-size:15px;font-weight:700;transition:.2s;display:inline-flex;align-items:center;gap:9px;}
+
+.btn.primary{background:linear-gradient(120deg,var(--laranja),var(--laranja2));color:#fff;box-shadow:0 8px 24px rgba(255,107,53,.35);}
+
+.btn.primary:hover{transform:translateY(-2px);}
+
+.btn.ghost{background:transparent;border:1.5px solid rgba(255,255,255,.25);color:#fff;}
+
+.btn.ghost:hover{border-color:var(--violeta2);background:rgba(124,58,237,.15);}
+
+.stats{display:flex;gap:44px;margin-top:56px;}
+
+.stat .n{color:#fff;font-size:32px;font-weight:800;}
+
+.stat .n span{background:linear-gradient(120deg,var(--violeta2),var(--laranja));-webkit-background-clip:text;background-clip:text;color:transparent;}
+
+.stat .l{color:var(--muted);font-size:13px;font-weight:600;margin-top:2px;}
+
+
+/* BARRA DE HABILIDADES */
+
+.skillbar{background:var(--navy2);padding:22px 0;}
+
+.skillbar .wrap{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+
+.skillbar span{color:var(--muted2);font-size:15px;font-weight:700;letter-spacing:.5px;display:flex;align-items:center;gap:9px;}
+
+.skillbar span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--violeta2);}
+
+
+/* SEÇÃO */
+
+seção{preenchimento:80px 0;}
+
+.eyebrow{color:var(--violeta);font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;}
+
+.h2{font-size:38px;font-weight:800;margin:8px 0 12px;letter-spacing:-.5px;}
+
+.lead-sec{color:var(--muted);font-size:16px;max-width:600px;margin-bottom:44px;}
+
+
+/* PROJETOS */
+
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+
+.pcard{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 40px rgba(26,27,58,.08);border:1px solid #ECECF5;transition:.25s;display:flex;flex-direction:column;}
+
+.pcard:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(124,58,237,.18);}
+
+.pcard.soon{opacity:.72;border-style:dashed;}
+
+.pcard.soon .pthumb{filter:grayscale(.3) opacity(.85);}
+
+.pcard.soon:hover{opacity:1;}
+
+.pthumb{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+
+.pthumb.t1{background:linear-gradient(135deg,#1A1B3A,#7C3AED);}
+
+.pthumb.t2{background:linear-gradient(135deg,#7C3AED,#4F7CFF);}
+
+.pthumb.t3{background:linear-gradient(135deg,#FF6B35,#7C3AED);}
+
+.pthumb img{width:100%;height:100%;object-fit:cover;}
+
+.pthumb .num{position:absolute;top:14px;left:16px;color:rgba(255,255,255,.9);font-size:13px;font-weight:800;background:rgba(0,0,0,.35);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;z-index:2;}
+
+.pthumb .icon{font-size:52px;}
+
+.pthumb .ph-txt{color:rgba(255,255,255,.9);font-size:12px;font-weight:600;text-align:center;line-height:1.5;padding:0 10px;}
+
+.pthumb .ph-txt b{font-size:10px;opacity:.8;font-weight:700;}
+
+.pbody{padding:24px;flex:1;display:flex;flex-direction:column;}
+
+.pcat{color:var(--violeta);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1px;}
+
+.pbody h3{font-size:20px;font-weight:800;margin:8px 0 10px;}
+
+.pbody p{color:var(--muted);font-size:14px;margin-bottom:16px;flex:1;}
+
+.ptags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;}
+
+.ptags span{background:#F1EFFB;color:var(--violeta);font-size:11px;font-weight:700;padding:5px 11px;border-radius:12px;}
+
+.plink{color:var(--laranja);font-size:14px;font-weight:800;display:inline-flex;align-items:center;gap:6px;}
+
+
+/* SOBRE + FOTO */
+
+.about{background:var(--navy);color:#fff;border-radius:26px;padding:52px;display:grid;grid-template-columns:auto 1fr;gap:44px;align-items:center;position:relative;overflow:hidden;}
+
+.about::before{content:"";position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.2),transparent 70%);}
+
+.photo-frame{width:190px;height:190px;border-radius:50%;position:relative;flex-shrink:0;background:linear-gradient(135deg,var(--violeta),var(--laranja));padding:5px;z-index:2;}
+
+.photo-frame .inner{width:100%;height:100%;border-radius:50%;background:var(--navy2);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+
+.photo-frame .inner img{width:100%;height:100%;object-fit:cover;border-radius:50%;}
+
+.photo-frame .inner .ph-foto{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+
+.photo-frame .inner svg{largura:74px;altura:74px;opacidade:.5;}
+
+.photo-frame .inner small{color:var(--muted2);font-size:10px;margin-top:5px;line-height:1.4;font-weight:600;}
+
+.photo-frame .inner small b{font-size:8.5px;opacity:.8;}
+
+.about-txt{z-index:2;}
+
+.about-txt h2{font-size:30px;font-weight:800;margin-bottom:14px;}
+
+.about-txt p{color:var(--muted2);font-size:15px;margin-bottom:14px;}
+
+.about-txt .hl{color:var(--laranja2);font-weight:700;}
+
+
+/* CONTATO */
+
+.contact-band{background:linear-gradient(120deg,var(--violeta),var(--azul));border-radius:26px;padding:50px;text-align:center;color:#fff;position:relative;overflow:hidden;}
+
+.contact-band::after{content:"";position:absolute;bottom:-100px;right:-60px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(255,107,53,.35),transparent 70%);}
+
+.contact-band h2{font-size:36px;font-weight:800;position:relative;z-index:2;}
+
+.contact-band p{font-size:17px;opacity:.9;margin:12px 0 30px;position:relative;z-index:2;}
+
+.contact-inner{display:flex;gap:30px;justify-content:center;align-items:center;position:relative;z-index:2;flex-wrap:wrap;}
+
+.qr-box{width:130px;height:130px;background:#fff;border-radius:14px;padding:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+
+.qr-box img{width:100%;height:100%;object-fit:contain;border-radius:6px;}
+
+.qr-box .ph-qr{font-size:9px;color:var(--navy);font-weight:700;text-align:center;line-height:1.5;}
+
+.qr-box .ph-qr b{font-size:7.5px;opacity:.7;}
+
+.contact-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+.cbtn{background:#fff;color:var(--navy);padding:14px 26px;border-radius:10px;font-weight:800;font-size:15px;display:inline-flex;gap:9px;align-items:center;transition:.2s;}
+
+.cbtn:hover{transform:translateY(-2px);}
+
+.cbtn.dark{background:var(--navy);color:#fff;}
+
+
+rodapé{fundo:var(--navy);cor:var(--muted);alinhamento de texto:centro;preenchimento:34px 0;tamanho da fonte:13px;}
+
+
+@media(max-width:860px){
+
+.grid3{grid-template-columns:1fr;}
+
+.hero h1{font-size:38px;}
+
+.about{grid-template-columns:1fr;text-align:center;justify-items:center;padding:36px;}
+
+.stats{gap:24px;flex-wrap:wrap;}
+
+.navlinks{display:none;}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= NAV ================= -->
+
+<nav>
+
+<div class="navin">
+
+<div class="logo"><span class="dot"></span>Tatianna Felix</div>
+
+<div class="navlinks">
+
+<a href="#projetos">Portfólio</a>
+
+<a href="#sobre">sobre</a>
+
+<a href="#contato">Contato</a>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- ================= HERÓI ================= -->
+
+<div class="hero">
+
+<div class="wrap">
+
+<div class="badge"><span class="pulse"></span>Disponível para projetos freelance</div>
+
+<h1>Transforme dados brutos em <span class="grad">decisões claras.</span></h1>
+
+<p class="sub">Consultora de dados especializada em Power BI, limpeza de dados (ETL) e automação. Do arquivo bagunçado ao dashboard que conta uma história.</p>
+
+<div class="hero-cta">
+
+<a class="btn primário" href="#contato">Agende uma conversa →</a>
+
+<a class="btn ghost" href="#projetos">Ver portfólio</a>
+
+</div>
+
+<div class="stats">
+
+<div class="stat"><div class="n"><span>Power BI</span></div><div class="l">Painéis executivos</div></div>
+
+<div class="stat"><div class="n"><span>Databricks</span></div><div class="l">ETL e pipelines</div></div>
+
+<div class="stat"><div class="n"><span>SQL · Python</span></div><div class="l">Automação de dados</div></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= BARRA DE HABILIDADES ================= -->
+
+<div class="skillbar">
+
+<div class="wrap">
+
+<span>Power BI</span><span>Databricks</span><span>SQL</span><span>Python</span><span>ETL</span><span>Narrativa de Dados</span>
+
+</div>
+
+</div>
+
+
+<!-- ================= PROJETOS ================= -->
+
+<section id="projetos">
+
+<div class="wrap">
+
+<div class="eyebrow">Portfólio</div>
+
+<div class="h2">Projetos em destaque</div>
+
+<p class="lead-sec">Casos reais de análise, limpeza e visualização de dados — do problema ao resultado.</p>
+
+<div class="grid3">
+
+
+<!-- ============================================================= -->
+
+<!-- PROJETO 1 — REAL (Eleições TSE) — JÁ PRONTO -->
+
+<!-- Para trocar a imagem: Substituir o arquivo imagens/eleicoes.png -->
+
+<!-- ============================================================= -->
+
+<div class="pcard">
+
+<div class="pthumb t1">
+
+<span class="num">01</span>
+
+<!-- ================= IMAGEM DO RELATÓRIO DA ELEIÇÃO ================= -->
+
+<!-- QUANDO TIVER A IMAGEM: (1) apague o <span class="ph-txt"> abaixo -->
+
+<!-- e (2) remove os <!- - -> da linha <img> para ativá-la. -->
+
+<!-- <img src="imagens/relatorio-eleicoes.png" alt="Relatório Eleições 2026"> -->
+
+<span class="ph-txt"> 🖼️ <br>COLE AQUI A IMAGEM<br>DO RELATÓRIO DA ELEIÇÃO<br><b>(imagens/relatorio-eleicoes.png)</b></span>
+
+</div>
+
+<div class="pbody">
+
+<div class="pcat">Dados Públicos · Contação de histórias</div>
+
+<h3>Eleições 2026 — Gastos de Campanha</h3>
+
+<p>Painel interativo que revela quanto cada candidato arrecadou e em que gastou, a partir dos 27 CSVs brutos do TSE.</p>
+
+<div class="ptags"><span>Power BI</span><span>Databricks</span><span>SQL</span></div>
+
+<!-- TROQUE o href="#" pelo LINK do seu dashboard publicado -->
+
+<a class="plink" href="#">Acessar painel →</a>
+
+</div>
+
+</div>
+
+
+<!-- ============================================================= -->
+
+<!-- PROJETO 2 — MODELO VAZIO (preencha quando tiver um novo case) -->
+
+<!-- Passo a passo: -->
+
+<!-- 1) Remova a palavra "soon" da linha <div class="pcard Soon"> -->
+
+<!-- 2) Descomente a linha <img ...> e apague o <span icon> -->
+
+<!-- 3) Troque os textos entre >> << -->
+
+<!-- ============================================================= -->
+
+<div class="pcard em breve">
+
+<div class="pthumb t2">
+
+<span class="num">02</span>
+
+<!-- COLE AQUI A IMAGEM DO DASHBOARD (ex.: imagens/projeto2.png) -->
+
+<!-- <img src="imagens/projeto2.png" alt="Nome do projeto"> -->
+
+<span class="icon"> 🖼️ </span>
+
+</div>
+
+<div class="pbody">
+
+<div class="pcat">&gt;&gt; COLOQUE AQUI A CATEGORIA (ex.: Engenharia de Dados · ETL) &lt;&lt;</div>
+
+<h3>&gt;&gt; COLOQUE AQUI O TÍTULO DO PROJETO &lt;&lt;</h3>
+
+<p>&gt;&gt; COLOQUE AQUI A DESCRIÇÃO: qual era o problema, o que você fez e qual foi o resultado. &lt;&lt;</p>
+
+<div class="ptags"><span>&gt;&gt; tecnologia</span><span>tecnologia</span><span>tecnologia &lt;&lt;</span></div>
+
+<!-- TROQUE o href pelo LINK do dashboard ou do repositório -->
+
+<a class="plink" href="#">&gt;&gt; Texto do botão (ex.: Ver código →) &lt;&lt;</a>
+
+</div>
+
+</div>
+
+
+<!-- ============================================================= -->
+
+<!-- PROJETO 3 — MODELO VAZIO (mesma lógica do cartão acima) -->
+
+<!-- ============================================================= -->
+
+<div class="pcard em breve">
+
+<div class="pthumb t3">
+
+<span class="num">03</span>
+
+<!-- COLE AQUI A IMAGEM DO DASHBOARD (ex.: imagens/projeto3.png) -->
+
+<!-- <img src="imagens/projeto3.png" alt="Nome do projeto"> -->
+
+<span class="icon"> 🖼️ </span>
+
+</div>
+
+<div class="pbody">
+
+<div class="pcat">&gt;&gt; COLOQUE AQUI A CATEGORIA &lt;&lt;</div>
+
+<h3>&gt;&gt; COLOQUE AQUI O TÍTULO DO PROJETO &lt;&lt;</h3>
+
+<p>&gt;&gt; COLOQUE AQUI A DESCRIÇÃO do projeto (problema → solução → resultado). &lt;&lt;</p>
+
+<div class="ptags"><span>&gt;&gt; tecnologia</span><span>tecnologia</span><span>tecnologia &lt;&lt;</span></div>
+
+<a class="plink" href="#">&gt;&gt; Texto do botão &lt;&lt;</a>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SOBRE ================= -->
+
+<section id="sobre" style="padding-top:0;">
+
+<div class="wrap">
+
+<div class="about">
+
+<div class="photo-frame">
+
+<div class="inner">
+
+<!-- ================= SUA FOTO DE PERFIL ================= -->
+
+<!-- QUANDO TIVER A FOTO: (1) apague o bloco <div class="ph-foto"> abaixo -->
+
+<!-- e (2) remove os <!- - -> da linha <img> para ativá-la. -->
+
+<!-- <img src="imagens/foto.png" alt="Foto de Tatianna Felix"> -->
+
+<div class="ph-foto">
+
+<svg viewBox="0 0 24 24" fill="#B4B6D4"><path d="M12 12c2.7 0 4.9-2.2 4.9-4.9S14.7 2.2 12 2.2 7.1 4.4 7.1 7.1 9.3 12 12 12zm0 2.4c-3.3 0-9.8 1.6-9.8 4.9v2.4h19.6v-2.4c0-3.3-6.5-4.9-9.8-4.9z"/></svg>
+
+<small>COLE AQUI<br>SUA FOTO<br><b>(imagens/foto.png)</b></small>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="about-txt">
+
+<h2>Olá, eu sou a Tatianna 👋 </h2>
+
+<p>Sou <span class="hl">consultora de dados</span> com experiência em fundos de investimento e projetos públicos. Trabalho desde a origem bagunçada dos dados até o dashboard final que executivos e leigos entendem.</p>
+
+<p>Meu diferencial: unir <span class="hl">engenharia de dados</span> (Databricks, SQL, Python) com <span class="hl">design de dashboards</span> (Power BI, UI/UX). Não entrego só gráfico — entrego claramente.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= CONTATO ================= -->
+
+<section id="contato" style="padding-top:0;">
+
+<div class="wrap">
+
+<div class="contact-band">
+
+<h2>Vamos conversar sobre seu próximo painel?</h2>
+
+<p>Disponível para projetos freelance de Power BI, ETL e automação de dados.</p>
+
+<div class="contact-inner">
+
+<!-- ================= QR CODE DO PROJETO ================= -->
+
+<!-- QUANDO TIVER O QR: (1) apague o <div class="ph-qr"> abaixo -->
+
+<!-- e (2) remove os <!- - -> da linha <img> para ativá-la. -->
+
+<!-- <img src="imagens/qrcode.png" alt="QR Code do painel"> -->
+
+<div class="qr-box">
+
+<div class="ph-qr">COLE AQUI<br>O QR CODE<br>DO PROJETO<br><b>(imagens/qrcode.png)</b></div>
+
+</div>
+
+<div class="contact-btns">
+
+<!-- Confirme/edite os links abaixo -->
+
+https://www.linkedin.com/in/tatianna-felix-3b890617/ 💼 LinkedIn</a>
+
+https://github.com/TatiannaFelixMorais 🐙 GitHub</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<footer>© 2026 Tatianna Felix · Consultora de Dados · Power BI · Databricks · SQL</footer>
+
+
+</body>
+
+</html>
